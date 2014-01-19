@@ -1,4 +1,5 @@
 #include <iostream>
+#include <GL/glew.h>
 #include <SDL2/SDL.h>
 
 int PrintSDLError(const std::string &prepend) {
@@ -31,6 +32,14 @@ int main(int argc, char **argv){
             return 1;
     }
 
+    // Initialize glew
+    GLenum glewError = glewInit();
+    if (glewError != GLEW_OK) {
+        std :: cerr << "Error: " << glewGetErrorString(glewError)
+                    << std :: endl;
+    }
+
+    SDL_Delay(2000);
     SDL_DestroyWindow(window);
     SDL_Quit();
 
