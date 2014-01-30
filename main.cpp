@@ -178,6 +178,10 @@ int main(int argc, char **argv) {
 
     SDL_GL_SetAttribute(SDL_GL_CONTEXT_MAJOR_VERSION, 3);
     SDL_GL_SetAttribute(SDL_GL_CONTEXT_MINOR_VERSION, 3);
+    SDL_GL_SetAttribute(SDL_GL_DOUBLEBUFFER, 1);
+    // If SDL_GL_DEPTH_SIZE is not set, results in only half of the window
+    // being used sometimes.
+    SDL_GL_SetAttribute(SDL_GL_DEPTH_SIZE, 24);
 
     //Request OpenGL 3.3 context.
     SDL_GLContext gl_context = SDL_GL_CreateContext(window);
